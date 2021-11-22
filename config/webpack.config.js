@@ -516,7 +516,7 @@ module.exports = function (webpackEnv) {
                 // 设置全局SCSS引入
                 loader: 'sass-resources-loader',
                 options: {
-                  resources: './src/common/global.scss'
+                  resources: './src/common/style/global.scss'
                 }
               }]),
               // Don't consider CSS imports dead code even if the
@@ -544,7 +544,7 @@ module.exports = function (webpackEnv) {
                 // 设置全局SCSS引入
                 loader: 'sass-resources-loader',
                 options: {
-                  resources: './src/common/global.scss'
+                  resources: './src/common/style/global.scss'
                 }
               }]),
             },
