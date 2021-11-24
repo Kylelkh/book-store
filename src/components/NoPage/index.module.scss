@@ -1,0 +1,102 @@
+.body {
+  display: block;
+  margin: 8px;
+}
+
+.fl {
+  float: left
+}
+
+.cf::after {
+  display: block;
+  clear: both;
+  overflow: hidden;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  content: '.';
+}
+
+.error {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Microsoft YaHei', 'Helvetica Neue Light', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  padding: 220px 0 0;
+}
+
+.errImg {
+  display: block;
+  max-width: 100%;
+  margin-right: 60px;
+}
+
+.errText {
+  max-width: 380px;
+
+  h3 {
+    margin: 0 0 32px;
+    color: #6b3612;
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  p {
+    margin: 8px 0;
+    color: grey;
+    font: 14px/32px PingFangSC-Regular, Simsun;
+
+    em {
+      margin: 0 5px;
+      font-family: Arial, serif;
+    }
+
+    span {
+      color: #3f5a93;
+    }
+  }
+
+  strong {
+    color: #1a1a1a;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 987px) {
+  .error {
+    padding: 60px 0 0;
+  }
+  .fl {
+    float: none;
+    width: 70%;
+    margin: 0 auto;
+  }
+  .errText h3 {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 540px) {
+  .fl {
+    width: 88%;
+  }
+  .errText {
+    h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: grey;
+      font-size: 13px;
+      line-height: 20px;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .fl {
+    width: 96%;
+  }
+}

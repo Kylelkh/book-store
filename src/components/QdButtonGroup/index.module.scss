@@ -1,0 +1,13 @@
+.btn-group {
+  display: table;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  table-layout: fixed;
+}
+
+.btn-group-cell {
+  font-size: 100%;
+  font-weight: 400;
+  display: table-cell;
+}
