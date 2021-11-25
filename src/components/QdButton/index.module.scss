@@ -59,6 +59,24 @@
   //margin: 0 .5625rem;
 }
 
+.solid {
+  color: #fff;
+  border: 1px solid #ed424b;
+  background-color: #ed424b;
+}
+
+.outline {
+  font-size: .8125rem;
+}
+
+.none {
+  border: none
+}
+
+.circle {
+  border-radius: 50%;
+}
+
 .tabStart {
   border-radius: 4px 0 0 4px;
   border-left: 1px solid #ed424b;

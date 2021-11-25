@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 
 /**
  * title：      按钮内容         string          按钮
- * type：       按钮类型         string          line          line | tag | gray | tab\
+ * type：       按钮类型         string          line          line | tag | gray | tab | circle
  * styles:      行间样式          object         css属性
  * tabStart： 按钮组第一个        boolean         false
  * tabEnd：   按钮组最后一个      boolean         false
@@ -37,7 +37,7 @@ export default class QdButton extends React.Component {
 
   static propTypes = {
     title: propTypes.string.isRequired,
-    type: propTypes.string.isRequired,
+    type: propTypes.oneOf(['line', 'tag', 'gray', 'tab', 'circle']).isRequired,
     style: propTypes.object,
     tabStart: propTypes.bool,
     tabEnd: propTypes.bool,
@@ -56,9 +56,9 @@ export default class QdButton extends React.Component {
   }
 
   render() {
-    const {title, type, style, active, to, route, children, replace, className: myClass} = this.props;
+    const {title, type, style, active, to, route, children, replace, className: myClass, fill} = this.props;
     // 处理类名
-    const className = `${myClass} ${styles.btn} ${styles[type]} ${active ? styles[`type-${type}-active`] : ''} ${this.judgeClass('block')} ${this.judgeClass('tabStart')} ${this.judgeClass('tabEnd')}`
+    const className = `${myClass} ${styles.btn} ${styles[type]} ${active ? styles[`type-${type}-active`] : ''} ${this.judgeClass('block')} ${this.judgeClass('tabStart')} ${this.judgeClass('tabEnd')} ${styles[fill]}`
     // 区分路由模式与按钮模式
     return route ? (
       <Link
@@ -83,9 +83,5 @@ export default class QdButton extends React.Component {
         >{title}</button>
       )
     )
-
-
-    // );
-    // 当前状态为active时显示children
   }
 };

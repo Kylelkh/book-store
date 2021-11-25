@@ -1,0 +1,88 @@
+.goLogin {
+  display: table;
+  width: 100%;
+  text-align: center;
+
+  .goLoginTip {
+    font-size: .875rem;
+    line-height: 3.4375rem;
+    display: table-cell;
+    padding: 0 1rem;
+    border-bottom: 1px solid #f0f1f2;
+
+    .charDot {
+      font-family: Georgia, Helvetica, Arial, serif;
+      padding: 0 .5ch;
+    }
+  }
+}
+
+.footerLinks {
+  font-size: .875rem;
+  display: flex;
+  padding: .5625rem 1.1875rem 0;
+  text-align: center;
+  color: #969ba3;
+  justify-content: space-around;
+
+  .footerLink {
+    color: #969ba3;
+    display: block;
+    padding: .5rem 0;
+    border: none;
+    background: none;
+
+    &:active {
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+    }
+  }
+}
+
+.footerCopy {
+  font-size: .75rem;
+  font-weight: 300;
+  padding-top: .25rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  color: #969ba3;
+}
+
+.footerApp {
+  position: relative;
+  display: block;
+  height: 3.75rem;
+  padding: .75rem 6rem 0 4rem;
+  background-color: #f6f7f9;
+  border: none;
+
+  &:active {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+  }
+
+  img {
+    position: absolute;
+    display: inline-block;
+    top: .75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    left: 1rem;
+  }
+
+  h3 {
+    font-size: .875rem;
+  }
+
+  p {
+    font-size: .75rem;
+    color: #969ba3;
+  }
+
+  .download {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    bottom: 0;
+    height: 1.625rem;
+    margin: auto;
+  }
+}
