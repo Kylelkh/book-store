@@ -6,26 +6,9 @@
   padding-bottom: .625rem;
   border-bottom: 1px solid #f0f1f2;
   background-color: #fff;
-}
 
-.logoA {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 5.625rem;
-  padding: 0 1rem;
-}
-
-.logo {
-  font-size: 1rem;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: inherit;
-  height: 1.125rem;
-  margin: auto;
-  color: transparent;
-  background: url(../../assets/images/logo.svg) no-repeat center;
-  background-size: 100%;
+  .headerNav {
+    line-height: 1.5rem;
+    padding: 0 .75rem;
+  }
 }

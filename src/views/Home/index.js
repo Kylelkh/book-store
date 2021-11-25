@@ -6,8 +6,8 @@ import Header from "../../components/Header";
 export default class Home extends React.Component {
   render() {
     return (
-      <div className="Home">
-        <Header />
+      <div>
+        <Header isHome to={'/home'} hasTabs />
       </div>
     );
   }

@@ -4,6 +4,13 @@ import QdButton from "../QdButton";
 
 import styles from './index.module.scss';
 
+/**
+ * type：       按钮类型           string          tab          line | tag | gray | tab
+ * activeIndex  默认活动按钮        number           1
+ * styles:      行间样式           object         css属性
+ * route        使用路由模式        Boolean        false
+ */
+
 export default class QdButtonGroup extends React.Component {
 
   state = {
@@ -12,67 +19,85 @@ export default class QdButtonGroup extends React.Component {
 
   static defaultProps = {
     type: 'tab',
-    btnNavs: null,
-    activeIndex: 0,
+    activeIndex: 1,
     style: {},
+    route: false,
   }
 
   static propTypes = {
     type: propTypes.string,
-    btnNavs: propTypes.arrayOf(propTypes.shape({
-      name: propTypes.string.isRequired,
-      url: propTypes.string.isRequired,
-    })).isRequired,
     activeIndex: propTypes.number,
     styles: propTypes.object,
+    route: propTypes.bool,
   }
 
   componentDidMount() {
-    this.setState({activeIndex: this.props.activeIndex})
+    this.setState({activeIndex: this.props.activeIndex - 1})
   }
 
   render() {
-    const {type, style, btnNavs} = this.props;
+    const {type, style, route, children} = this.props;
     return (
-      <div style={style}>
-        <nav className={styles['btn-group']}>
-          {
-            btnNavs.map((item, index) => {
-              if (index === 0) {
-                return (
-                  <h3 className={styles['btn-group-cell']} key={index} onClick={() => {
-                    this.setState({activeIndex: index})
-                    console.log(this.state.activeIndex)
-                  }}>
-                    <QdButton type={type} content={item.name} url={item.url} active={index === this.state.activeIndex}
-                              tabStart />
-                  </h3>
-                )
-              } else if (index === btnNavs.length - 1) {
-                return (
-                  <h3 className={styles['btn-group-cell']} key={index} onClick={() => {
-                    this.setState({activeIndex: index})
-                    console.log(this.state.activeIndex)
-                  }}>
-                    <QdButton type={type} content={item.name} url={item.url} active={index === this.state.activeIndex}
-                              tabEnd />
-                  </h3>
-                )
-              } else {
-                return (
-                  <h3 className={styles['btn-group-cell']} key={index} onClick={() => {
-                    this.setState({activeIndex: index})
-                    console.log(this.state.activeIndex)
-                  }}>
-                    <QdButton type={type} content={item.name} url={item.url}
-                              active={index === this.state.activeIndex} />
-                  </h3>
-                )
-              }
-            })
-          }
-        </nav>
-      </div>
+      <nav className={styles['btn-group']} style={style}>
+        {
+          children.map((item, index) => {
+            if (index === 0) {
+              return (
+                <h3 className={styles['btn-group-cell']}
+                    key={index}
+                    onClick={() => this.setState({activeIndex: index})}
+                >
+                  <QdButton
+                    type={type}
+                    block
+                    className={item.props.className}
+                    title={item.props.title}
+                    to={item.props.to}
+                    active={index === this.state.activeIndex}
+                    route={route}
+                    tabStart
+                  >{item.props.children}</QdButton>
+                </h3>
+              )
+            } else if (index === children.length - 1) {
+              return (
+                <h3 className={styles['btn-group-cell']}
+                    key={index}
+                    onClick={() => this.setState({activeIndex: index})}
+                >
+                  <QdButton
+                    type={type}
+                    block
+                    className={item.props.className}
+                    title={item.props.title}
+                    to={item.props.to}
+                    active={index === this.state.activeIndex}
+                    route={route}
+                    tabEnd
+                  >{item.props.children}</QdButton>
+                </h3>
+              )
+            } else {
+              return (
+                <h3 className={styles['btn-group-cell']}
+                    key={index}
+                    onClick={() => this.setState({activeIndex: index})}
+                >
+                  <QdButton
+                    type={type}
+                    block
+                    className={item.props.className}
+                    title={item.props.title}
+                    to={item.props.to}
+                    active={index === this.state.activeIndex}
+                    route={route}
+                  >{item.props.children}</QdButton>
+                </h3>
+              )
+            }
+          })
+        }
+      </nav>
     );
   }
 }
