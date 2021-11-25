@@ -31,8 +31,8 @@ export default class QdButtonGroup extends React.Component {
     route: propTypes.bool,
   }
 
-  componentDidMount() {
-    this.setState({activeIndex: this.props.activeIndex - 1})
+  static getDerivedStateFromProps(nextProps) {
+    return {activeIndex: nextProps.activeIndex}
   }
 
   render() {

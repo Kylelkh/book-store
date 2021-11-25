@@ -4,7 +4,6 @@ import style from './index.module.scss'
 
 export default class NoPage extends React.Component {
   render() {
-    document.title = "出错啦！";
     return (
       <div className={style.body}>
         <div className={`${style.error} ${style.cf}`}>

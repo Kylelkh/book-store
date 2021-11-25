@@ -1,7 +1,6 @@
 import React from "react";
 // import {Link} from "react-router-dom";
 // import propTypes from "prop-types";
-// import {LeftOutline, UserOutline, ContentOutline, SearchOutline, AppstoreOutline} from 'antd-mobile-icons'
 
 // import style from './index.module.scss'
 import Header from "../../components/Header";
@@ -22,7 +21,14 @@ export default class Rank extends React.Component {
   render() {
     return (
       <div>
-        <Header pageTitle={'排行榜'} url={'/rank'} hasTabs />
+        <Header
+          pageTitle={'排行榜'}
+          hasTabs
+          tabs={[
+            {name: '男生', to: '/rank'},
+            {name: '女生', to: '/rank/female'}
+          ]}
+        />
       </div>
     );
   }

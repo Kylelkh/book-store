@@ -7,6 +7,8 @@ import Rank from "../../views/Rank";
 import Free from "../../views/Free";
 import Finish from "../../views/Finish";
 import DaShen from "../../views/DaShen";
+import Bookshelf from "../../views/Bookshelf";
+import Search from "../../views/Search";
 
 export default class App extends React.Component {
   render() {
@@ -15,12 +17,13 @@ export default class App extends React.Component {
         <Switch>
           <Redirect exact from={'/'} to={'/home'} />
           <Route path={'/home'} component={Home} />
-          <Route path={'/female'} component={Home} />
           <Route path={'/category'} component={Category} />
           <Route path={'/rank'} component={Rank} />
           <Route path={'/free'} component={Free} />
           <Route path={'/finish'} component={Finish} />
           <Route path={'/dashen'} component={DaShen} />
+          <Route path={'/search'} component={Search} />
+          <Route path={'/bookshelf'} component={Bookshelf} />
           <Route component={NoPage} />
         </Switch>
       </div>

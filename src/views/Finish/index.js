@@ -22,7 +22,14 @@ export default class Finish extends React.Component {
   render() {
     return (
       <div>
-        <Header pageTitle={'完本'} url={'/finish'} hasTabs />
+        <Header
+          pageTitle={'完本'}
+          hasTabs
+          tabs={[
+            {name: '男生', to: '/finish'},
+            {name: '女生', to: '/finish/female'}
+          ]}
+        />
       </div>
     );
   }

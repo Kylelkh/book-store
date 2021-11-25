@@ -1,5 +1,4 @@
 import React from "react";
-// import {Link} from "react-router-dom";
 // import propTypes from "prop-types";
 // import {LeftOutline, UserOutline, ContentOutline, SearchOutline, AppstoreOutline} from 'antd-mobile-icons'
 
@@ -13,7 +12,7 @@ import Header from "../../components/Header";
  * hasTabs        是否有男/女分类     Boolean       false
  */
 
-export default class DaShen extends React.Component {
+export default class Bookshelf extends React.Component {
 
   static defaultProps = {}
 
@@ -23,11 +22,10 @@ export default class DaShen extends React.Component {
     return (
       <div>
         <Header
-          pageTitle={'大神'}
           hasTabs
           tabs={[
-            {name: '男生', to: '/dashen'},
-            {name: '女生', to: '/dashen/female'}
+            {name: '我的书架', to: '/bookshelf'},
+            {name: '最近阅读', to: '/bookshelf/history'},
           ]}
         />
       </div>

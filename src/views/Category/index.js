@@ -22,7 +22,14 @@ export default class Category extends React.Component {
   render() {
     return (
       <div>
-        <Header pageTitle={'分类'} url={'/category'} hasTabs />
+        <Header
+          pageTitle={'分类'}
+          hasTabs
+          tabs={[
+            {name: '男生', to: '/category'},
+            {name: '女生', to: '/category/female'}
+          ]}
+        />
       </div>
     );
   }

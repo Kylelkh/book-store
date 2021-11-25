@@ -14,6 +14,8 @@ import propTypes from 'prop-types';
  * active:   按钮组活动按钮      boolean         false
  * to:        按钮路由地址       string
  * route:       路由模式         boolean         false
+ * replace:   是否替换路由       boolean         false
+ * className:  给按钮的样式       string
  */
 
 export default class QdButton extends React.Component {
@@ -28,9 +30,9 @@ export default class QdButton extends React.Component {
     active: false,
     to: '',
     route: false,
-    hasView: true,
     replace: false,
     className: '',
+    fill: 'outline',
   }
 
   static propTypes = {
@@ -45,6 +47,7 @@ export default class QdButton extends React.Component {
     route: propTypes.bool,
     replace: propTypes.bool,
     className: propTypes.string,
+    fill: propTypes.oneOf(['solid', 'outline', 'none']),
   }
 
   // 根据参数使用相应类名
@@ -65,14 +68,24 @@ export default class QdButton extends React.Component {
         style={style}
       >{title}</Link>
     ) : (
-      <div>
+      children ? (
+        <div>
+          <button
+            className={className.trim()}
+            style={style}
+          >{title}</button>
+          {active && <div>{children}</div>}
+        </div>
+      ) : (
         <button
           className={className.trim()}
           style={style}
         >{title}</button>
-        {active && <div>{children}</div>}
-      </div>
-    );
+      )
+    )
+
+
+    // );
     // 当前状态为active时显示children
   }
 };
