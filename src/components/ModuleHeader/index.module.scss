@@ -1,0 +1,70 @@
+.moduleHeader {
+  //height: 1.75rem;
+  padding: 0 1rem;
+  border-top: 1rem solid transparent;
+
+  .headerTitle {
+    font-family: FZZCYSK, serif;
+    font-weight: 700;
+    display: inline;
+    color: #33373d;
+    margin-bottom: 0;
+
+    &::before {
+      display: inline-block;
+      box-sizing: border-box;
+      width: .625rem;
+      height: 1em;
+      content: '';
+      vertical-align: -.22ex;
+      color: transparent;
+      border-left: 2px solid #ed424b;
+    }
+  }
+
+  .timeDay,
+  .timeHour,
+  .timeMinute,
+  .timeSecond {
+    font: 400 .625rem/.872rem 'DIN Alternate';
+    position: relative;
+    display: inline-block;
+    width: .875rem;
+    margin-right: 5px;
+    padding-top: .0625rem;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    border-radius: 2px;
+    background-color: #33373d;
+  }
+
+  .headerDesc {
+    font-size: .8125rem;
+    margin-left: .5rem;
+    color: #969ba3;
+  }
+
+  .headerR {
+    position: relative;
+    float: right;
+    min-width: 4rem;
+
+    .headerMore {
+      font-size: .875rem;
+      line-height: 1.5rem;
+      position: absolute;
+      top: -.5rem;
+      right: -.75rem;
+      padding: .5rem .5rem .5rem .75rem;
+      white-space: nowrap;
+      color: #969ba3;
+    }
+  }
+
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}

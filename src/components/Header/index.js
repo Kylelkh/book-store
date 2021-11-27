@@ -3,10 +3,12 @@ import propTypes from "prop-types";
 import {withRouter, Link} from "react-router-dom";
 import {
   LeftOutline,
-  UserOutline,
   ContentOutline,
-  SearchOutline,
 } from 'antd-mobile-icons'
+import {
+  UserOutlined,
+  SearchOutlined
+} from '@ant-design/icons';
 import {Popup} from 'antd-mobile'
 
 import style from './index.module.scss'
@@ -46,7 +48,7 @@ class Header extends React.Component {
   render() {
     const {isHome, pageTitle, hasTabs, tabs} = this.props;
     return (
-      <div className={style.header}>
+      <div className={style.header} style={isHome ? null : {background: '#FFF'}}>
         {
           // 导航栏左部
           isHome ? (
@@ -92,7 +94,7 @@ class Header extends React.Component {
                 className={style.icon}
                 onClick={() => this.props.history.push('/user')}
               >
-                <UserOutline fontSize={20} color={'#ED424B'} />
+                <UserOutlined style={{fontSize: '18px', color: '#ED424B'}} />
               </button>
               <button
                 className={style.icon}
@@ -107,7 +109,7 @@ class Header extends React.Component {
                 className={style.icon}
                 onClick={() => this.props.history.push('/search')}
               >
-                <SearchOutline fontSize={19} color={'#33373D'} />
+                <SearchOutlined style={{fontSize: '17px', color: '#7F8285'}} />
               </button>
               <button
                 className={`${style.iconMore} ${this.state.moreActive ? style.active : ''}`}

@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 import {Link} from "react-router-dom";
 // import propTypes from "prop-types";
 
-import style from './index.module.scss'
+import styles from './index.module.scss'
 import QdButton from "../QdButton";
 
 /**
@@ -29,36 +29,36 @@ export default class Footer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.footer}>
         {
           this.state.isLogin || (
-            <div className={style.goLogin}>
-              <div className={style.goLoginTip}>
+            <div className={styles.goLogin}>
+              <div className={styles.goLoginTip}>
                 <strong>登录后获得更多特色功能</strong>
-                <span className={style.charDot}>·</span>
+                <span className={styles.charDot}>·</span>
                 <Link to={'/login'} style={{color: '#4284ED'}}>立即登录</Link>
               </div>
             </div>
           )
         }
-        <div className={style.footerLinks}>
-          <button className={style.footerLink}>客户端</button>
-          <Link to={'/home'} className={style.footerLink} style={{color: '#33373D'}}>触屏版</Link>
-          <a href="//www.qidian.com" className={style.footerLink}>电脑版</a>
-          <a href="//m.qidian.com/user/help" className={style.footerLink}>帮助</a>
-          <button className={style.footerLink}>反馈</button>
+        <div className={styles.footerLinks}>
+          <button className={styles.footerLink}>客户端</button>
+          <Link to={'/home'} className={styles.footerLink} style={{color: '#33373D'}}>触屏版</Link>
+          <a href="//www.qidian.com" className={styles.footerLink}>电脑版</a>
+          <a href="//m.qidian.com/user/help" className={styles.footerLink}>帮助</a>
+          <button className={styles.footerLink}>反馈</button>
         </div>
-        <div className={style.footerCopy}>
+        <div className={styles.footerCopy}>
           网站备案/许可证号：
           <a href="https://beian.miit.gov.cn">沪B2-20080046-1</a>
           <br />
           copyright © 2002-2021 m.qidian.com
         </div>
-        <Link to={'/home'} className={style.footerApp}>
+        <Link to={'/home'} className={styles.footerApp}>
           <img src="/images/footerApp.png" alt='' />
           <h3>安装起点读书客户端</h3>
           <p>看更多正版好书</p>
-          <QdButton className={style.download} fill={'solid'} type={'line'} title={'下载'} />
+          <QdButton className={styles.download} fill={'solid'} type={'line'} title={'下载'} style={{lineHeight: 1}} />
         </Link>
       </div>
     );

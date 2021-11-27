@@ -1,0 +1,11 @@
+.spin {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+
+  i {
+    background-color: #ed424b;
+  }
+}

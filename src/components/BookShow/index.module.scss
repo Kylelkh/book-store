@@ -1,0 +1,146 @@
+.bookLayout {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 1rem;
+  -webkit-transition: padding-left .15s;
+  transition: padding-left .15s;
+
+  .bookCover {
+    font-size: 0;
+    float: left;
+    width: 4.125rem;
+    height: 5.5rem;
+    margin-right: .5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+  }
+
+  .bookTitle {
+    line-height: 1.4;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .bookDesc {
+    font-size: .875rem;
+    overflow: hidden;
+    margin: .375rem 0;
+    color: #969ba3;
+    line-height: 1.1875rem;
+    display: -webkit-box;
+    height: 2.25rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .bookMeta {
+    font-size: .75rem;
+    overflow: hidden;
+
+    .bookAuth {
+      font-size: .8125rem;
+      display: block;
+      overflow: hidden;
+      max-width: calc(100vw - 2rem - (176rem / 16));
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: #969ba3;
+    }
+
+    .bookTags {
+      display: inline-block;
+      position: absolute;
+      top: -.375rem;
+      right: 0;
+      white-space: nowrap;
+    }
+  }
+}
+
+.bookLayoutS {
+  display: block;
+  width: 5.125rem;
+  padding: .75rem .5rem .5rem;
+
+  .bookFree {
+    font-size: 10px;
+    position: absolute;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #4284ed;
+
+    em {
+      font-size: 10px;
+      line-height: 11px;
+      position: absolute;
+      right: -12px;
+      bottom: 0;
+      left: 0;
+      padding-top: 1px;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-transform-origin: left bottom;
+      transform-origin: left bottom;
+      color: inherit;
+      background-color: currentColor;
+    }
+  }
+
+  .bookRank {
+    font-size: 10px;
+    position: absolute;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+
+    em {
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 10px;
+      padding-top: 14px;
+      text-transform: uppercase;
+      font-family: 'DIN Alternate', serif;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 9px;
+      content: '';
+      background: url('../../assets/images/rank.svg') no-repeat center;
+      background-size: 100%;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 5.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    background: url("../../assets/images/book-cover.svg") no-repeat center center;
+    background-size: cover;
+  }
+
+  .bookCaption {
+    font-size: .8125rem;
+    line-height: 1.25;
+    overflow: hidden;
+    max-height: 2.125rem;
+    margin: .5rem 0 .125rem;
+  }
+
+  .bookAuthS {
+    font-size: .75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #969ba3;
+    margin-bottom: 0;
+  }
+}
