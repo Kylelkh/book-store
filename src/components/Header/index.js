@@ -94,13 +94,13 @@ class Header extends React.Component {
                 className={style.icon}
                 onClick={() => this.props.history.push('/user')}
               >
-                <UserOutlined style={{fontSize: '18px', color: '#ED424B'}} />
+                <UserOutlined style={{fontSize: '1.1rem', color: '#ED424B'}} />
               </button>
               <button
                 className={style.icon}
                 onClick={() => this.props.history.push('/bookshelf')}
               >
-                <ContentOutline fontSize={20} color={'#ED424B'} />
+                <ContentOutline fontSize={'1.3rem'} color={'#ED424B'} />
               </button>
             </div>
           ) : (
@@ -109,7 +109,7 @@ class Header extends React.Component {
                 className={style.icon}
                 onClick={() => this.props.history.push('/search')}
               >
-                <SearchOutlined style={{fontSize: '17px', color: '#7F8285'}} />
+                <SearchOutlined style={{fontSize: '1.1rem', color: '#7F8285'}} />
               </button>
               <button
                 className={`${style.iconMore} ${this.state.moreActive ? style.active : ''}`}

@@ -7,7 +7,7 @@ import propTypes from 'prop-types';
 /**
  * title：      按钮内容         string          按钮
  * type：       按钮类型         string          line          line | tag | gray | tab | circle
- * styles:      行间样式          object         css属性
+ * style:      行间样式          object         css属性
  * tabStart： 按钮组第一个        boolean         false
  * tabEnd：   按钮组最后一个      boolean         false
  * block：      按钮占满         boolean         false
@@ -74,7 +74,7 @@ export default class QdButton extends React.Component {
             className={className.trim()}
             style={style}
           >{title}</button>
-          {active && <div>{children}</div>}
+          {active && <div className={styles.tabContent}>{children}</div>}
         </div>
       ) : (
         <button

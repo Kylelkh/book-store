@@ -4,9 +4,11 @@ import PubSub from 'pubsub-js'
 import React from "react";
 
 request.interceptors.request.use((url, options) => {
+  console.log('请求')
   const token = Cookie.get('token');
   // 携带token
-  token && (options.headers = {'token': token})
+  token && (options.headers = {'token': token});
+  options.useCache = true;
   // 开启加载状态
   PubSub.publish('uploadLoading', true);
   // console.log(true)
@@ -17,6 +19,7 @@ request.interceptors.request.use((url, options) => {
 })
 
 request.interceptors.response.use(response => {
+  console.log('响应')
   const codeMaps = {
     200: '服务器成功返回请求的数据。',
     201: '新建或修改数据成功。',

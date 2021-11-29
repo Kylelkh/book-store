@@ -21,6 +21,10 @@ import styles from './index.module.scss';
 
 export default class BookShow extends React.Component {
 
+  state = {
+    rankColor: ['#ED424B', '#F0643A', '#F0C53A', '#969BA3'],
+  }
+
   static defaultProps = {
     _id: '',
     img: '',
@@ -49,8 +53,6 @@ export default class BookShow extends React.Component {
 
   render() {
     const {_id, img, title, desc, auth, fenlei, end, words, free, rankIndex} = this.props
-    const rankColor = ['#ED424B', '#F0643A', '#F0C53A', '#969BA3'];
-    const color = rankIndex && (rankColor < 4 ? rankColor[rankIndex - 1] : rankColor[3]);
     return desc ? (
       <Link to={`/book/${_id}`} className={styles.bookLayout}>
         <img src={img} alt="" className={styles.bookCover} />
@@ -61,7 +63,7 @@ export default class BookShow extends React.Component {
             <div style={{float: 'left'}}>
               <span className={styles.bookAuth}>
                 <UserOutline
-                  fontSize={'.75rem'}
+                  fontSize={'.8rem'}
                   color={'#969BA3'}
                   style={{
                     marginRight: '.1875rem',
@@ -75,7 +77,7 @@ export default class BookShow extends React.Component {
               <span className={styles.bookTags}>
                 <Tag color='#969ba3' fill='outline'>{fenlei}</Tag>
                 <Tag color='#ed424b' fill='outline'>{end}</Tag>
-                <Tag color='#4284ed' fill='outline'>{words}</Tag>
+                <Tag color='#4284ed' fill='outline'>{`${words}万字`}</Tag>
               </span>
             </div>
           </div>
@@ -84,7 +86,15 @@ export default class BookShow extends React.Component {
     ) : (
       <Link to={`/book/${_id}`} className={styles.bookLayoutS}>
         {free && <span className={styles.bookFree}><em>限免</em></span>}
-        {rankIndex && <span className={styles.bookRank} style={{color}}><em>{`top${rankIndex}`}</em></span>}
+        {rankIndex === null || (
+          <span className={styles.bookRank}>
+            <em
+              style={{
+                background: this.state.rankColor[rankIndex < 3 ? rankIndex : 3],
+                color: '#FFFFFF'
+              }}>{`top${rankIndex + 1}`}</em>
+          </span>
+        )}
         <img src={img} alt="" />
         <figcaption className={styles.bookCaption}>{title}</figcaption>
         <p className={styles.bookAuthS}>{auth}</p>

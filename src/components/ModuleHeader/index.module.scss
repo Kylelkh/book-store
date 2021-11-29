@@ -1,10 +1,11 @@
 .moduleHeader {
-  //height: 1.75rem;
+  height: 2.75rem;
   padding: 0 1rem;
   border-top: 1rem solid transparent;
 
   .headerTitle {
-    font-family: FZZCYSK, serif;
+    font-size: .9rem;
+    font-family: FZZCYSK;
     font-weight: 700;
     display: inline;
     color: #33373d;
@@ -39,6 +40,25 @@
     background-color: #33373d;
   }
 
+  .timeHour,
+  .timeMinute,
+  .timeSecond {
+    &:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -3px;
+      width: 1px;
+      height: 2px;
+      margin: auto;
+      content: '';
+      transform: translateY(-3px);
+      border-radius: 1px;
+      background-color: #969ba3;
+      box-shadow: 0 5px #969ba3;
+    }
+  }
+
   .headerDesc {
     font-size: .8125rem;
     margin-left: .5rem;
@@ -52,7 +72,6 @@
 
     .headerMore {
       font-size: .875rem;
-      line-height: 1.5rem;
       position: absolute;
       top: -.5rem;
       right: -.75rem;

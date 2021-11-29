@@ -6,6 +6,10 @@
   text-align: center;
   border: 1px solid;
   border-radius: 99px;
+
+  &:hover {
+    color: #ed424b;
+  }
 }
 
 .gray {
@@ -33,7 +37,18 @@
   background-color: #fff;
 }
 
-.line,
+.tabContent {
+  position: absolute;
+  //width: 95.5vw;
+  width: 100vw;
+  left: 0;
+}
+
+.line {
+  color: #ed424b;
+  background-color: #F6F7F9;
+}
+
 .type-line-active,
 .type-tag-active {
   color: #ed424b;
@@ -55,7 +70,7 @@
 
 .block {
   display: block;
-  //width: 100%;
+  width: 100%;
   //margin: 0 .5625rem;
 }
 

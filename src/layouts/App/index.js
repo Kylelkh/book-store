@@ -1,10 +1,10 @@
 import React from 'react';
 import {Redirect, Route, Switch, withRouter} from "react-router-dom";
-import {Spin} from "antd";
+import {Spin, BackTop} from "antd";
 import {Mask} from "antd-mobile";
 import PubSub from 'pubsub-js';
 import 'antd/lib/spin/style/css';
-// import 'antd/dist/antd.css';
+import 'antd/lib/back-top/style/css';
 import styles from './index.module.scss'
 import NoPage from "../../views/NoPage";
 import Home from "../../views/Home";
@@ -28,9 +28,9 @@ class App extends React.Component {
       this.setState({loading})
     });
     // 监听路由变化，路由变化后，将除登录/注册外的页面加载状态打开
-    // this.props.history.listen(route => {
-    //   /login|reg/.test(route.pathname) || PubSub.publish('updateLoading', true)
-    // })
+    this.props.history.listen(location => {
+      /login|reg/.test(location.pathname) || PubSub.publish('updateLoading', true)
+    })
   }
 
   componentWillUnmount() {
@@ -55,11 +55,13 @@ class App extends React.Component {
             />
           </div>
         </Mask>
+        {/*回到顶部*/}
+        <BackTop />
+        {/*路由*/}
         <Switch>
-          {/*路由*/}
           <Redirect exact from={'/'} to={'/home'} />
           <Route path={'/home'} component={Home} />
-          <Route path={'/category'} component={Category} />
+          <Route exact path={'/category'} component={Category} />
           <Route path={'/rank'} component={Rank} />
           <Route path={'/free'} component={Free} />
           <Route path={'/finish'} component={Finish} />

@@ -32,29 +32,33 @@ export default class ModuleHeader extends React.Component {
     moreUrl: propTypes.string,
   }
 
+
   calcTime = endTime => {
     // 计算目标时间对象到当前时间的毫秒数
     const time = endTime - Date.now();
+    const fillZero = val => val < 10 ? '0' + val : val;
     // 返回需要的数据
     return {
-      day: Math.floor(time / 1000 / 3600 / 24),
-      hour: Math.floor(time / 1000 / 3600 % 24),
-      min: Math.floor(time / 1000 / 60 % 60),
-      sec: Math.round(time / 1000 % 60),
+      day: fillZero(Math.floor(time / 1000 / 3600 / 24)),
+      hour: fillZero(Math.floor(time / 1000 / 3600 % 24)),
+      min: fillZero(Math.floor(time / 1000 / 60 % 60)),
+      sec: fillZero(Math.round(time / 1000 % 60)),
     }
   }
 
   static getDerivedStateFromProps(nextProps) {
     const time = nextProps.freeTime - Date.now();
+    const fillZero = val => val < 10 ? '0' + val : val;
     return {
       time: {
-        day: Math.floor(time / 1000 / 3600 / 24),
-        hour: Math.floor(time / 1000 / 3600 % 24),
-        min: Math.floor(time / 1000 / 60 % 60),
-        sec: Math.round(time / 1000 % 60),
+        day: fillZero(Math.floor(time / 1000 / 3600 / 24)),
+        hour: fillZero(Math.floor(time / 1000 / 3600 % 24)),
+        min: fillZero(Math.floor(time / 1000 / 60 % 60)),
+        sec: fillZero(Math.round(time / 1000 % 60)),
       }
     };
   }
+
 
   componentDidMount() {
     this.intervalTime = setInterval(() => this.setState({time: this.calcTime(this.props.freeTime)}), 1000)
@@ -67,10 +71,9 @@ export default class ModuleHeader extends React.Component {
   render() {
     const {title, desc, freeTime, moreUrl} = this.props;
     const {time} = this.state;
-    freeTime && console.log(this.calcTime(freeTime));
     return (
       <div className={styles.moduleHeader}>
-        <div style={moreUrl ? {float: 'left'} : null}>
+        <div style={moreUrl ? {float: 'left', fontSize: '100%'} : {fontSize: '100%'}}>
           <h2 className={styles.headerTitle}>{title}</h2>
           {desc && <span className={styles.headerDesc}>{desc}</span>}
           {freeTime && (
@@ -89,7 +92,7 @@ export default class ModuleHeader extends React.Component {
               className={styles.headerMore}
             >
               更多
-              <RightOutline style={{marginLeft: '0.25rem'}} />
+              <RightOutline style={{marginLeft: '0.25rem', fontSize: '1rem', marginBottom: '-0.05rem'}} />
             </Link>
           </div>
         )}
