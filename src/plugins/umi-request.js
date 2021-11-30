@@ -4,7 +4,6 @@ import PubSub from 'pubsub-js'
 import React from "react";
 
 request.interceptors.request.use((url, options) => {
-  console.log('请求')
   const token = Cookie.get('token');
   // 携带token
   token && (options.headers = {'token': token});
@@ -19,7 +18,6 @@ request.interceptors.request.use((url, options) => {
 })
 
 request.interceptors.response.use(response => {
-  console.log('响应')
   const codeMaps = {
     200: '服务器成功返回请求的数据。',
     201: '新建或修改数据成功。',

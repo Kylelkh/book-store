@@ -23,14 +23,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // 创建监听
-    this.pubsubLoading = PubSub.subscribe('updateLoading', (msg, loading) => {
-      this.setState({loading})
-    });
-    // 监听路由变化，路由变化后，将除登录/注册外的页面加载状态打开
-    this.props.history.listen(location => {
-      /login|reg/.test(location.pathname) || PubSub.publish('updateLoading', true)
-    })
+    // 创建加载状态监听
+    this.pubsubLoading = PubSub.subscribe('updateLoading', (msg, loading) => this.setState({loading}));
+    // 路由变化时，确定加载状态
+    this.props.history.listen(location => PubSub.publish('updateLoading', !/login|reg|404/.test(location.pathname)));
+    // 页面第一次初始化时，确定加载状态
+    PubSub.publish('updateLoading', !/login|reg|404/.test(this.props.location.pathname));
   }
 
   componentWillUnmount() {
@@ -62,13 +60,15 @@ class App extends React.Component {
           <Redirect exact from={'/'} to={'/home'} />
           <Route path={'/home'} component={Home} />
           <Route exact path={'/category'} component={Category} />
+          <Route exact path={'/category/female'} component={Category} />
           <Route path={'/rank'} component={Rank} />
           <Route path={'/free'} component={Free} />
           <Route path={'/finish'} component={Finish} />
           <Route path={'/dashen'} component={DaShen} />
           <Route path={'/search'} component={Search} />
           <Route path={'/bookshelf'} component={Bookshelf} />
-          <Route component={NoPage} />
+          <Route path={'/404'} component={NoPage} />
+          <Redirect to={'/404'} />
         </Switch>
       </div>
     );

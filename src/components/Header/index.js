@@ -52,7 +52,7 @@ class Header extends React.Component {
         {
           // 导航栏左部
           isHome ? (
-            <Link to={'/'} className={style.logoA}>
+            <Link to={'/home'} className={style.logoA}>
               <h1 className={style.logo}>起点中文网</h1>
             </Link>
           ) : (

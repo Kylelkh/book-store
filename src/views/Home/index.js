@@ -19,6 +19,7 @@ export default class Home extends React.Component {
     male: {},
     female: {},
     isMale: true,
+    tabIndex: 0,
     maleRank: ['畅销榜', '风云榜', '签约榜', '推荐榜'],
     femaleRank: ['畅销榜', '风云榜', '点击榜', '推荐榜'],
     maleCategory: {floor1: ['玄幻奇幻', '武侠仙侠', '都市职场'], floor2: ['历史军事', '游戏体育', '科幻悬疑']},
@@ -30,10 +31,14 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.history.listen(location => {
-      this.updateData(location);
-    })
-    this.updateData(this.props.location)
+    // 只监听本页路由来更新数据
+    this.unListen = this.props.history.listen(location => /home/.test(location.pathname) && this.updateData(location));
+    this.updateData(this.props.location);
+  }
+
+  componentWillUnmount() {
+    // 卸载监听
+    this.unListen();
   }
 
   updateData = async location => {
@@ -45,12 +50,10 @@ export default class Home extends React.Component {
       } : {
         isMale,
         female: (await queryHomeFemale()).data
-      }, () => {
-        // 如果umi-request使用了缓存，缓存有效期内的请求不会经过响应拦截器，所以这里手动将loading停止
-        PubSub.publish('updateLoading', false)
-      })
+      }, () => PubSub.publish('updateLoading', false))
+      // 如果umi-request使用了缓存，缓存有效期内的请求不会经过响应拦截器，所以这里手动将loading停止
     } catch (err) {
-      console.log(err);
+      console.log(111, err);
     }
   }
 
@@ -62,14 +65,10 @@ export default class Home extends React.Component {
     return data.banner ? (
       <div>
         {/*头部*/}
-        <Header
-          isHome
-          hasTabs
-          tabs={[
-            {name: '男生', to: '/home'},
-            {name: '女生', to: '/home/female'}
-          ]}
-        />
+        <Header isHome hasTabs tabs={[
+          {name: '男生', to: '/home'},
+          {name: '女生', to: '/home/female'}
+        ]} />
         {/*轮播图*/}
         <div className={styles.swiper}>
           <Swiper
@@ -99,13 +98,8 @@ export default class Home extends React.Component {
           </Swiper>
         </div>
         {/*搜索跳转*/}
-        <Link
-          to={'/search'}
-          className={styles.search}
-        >
-          <Button
-            block
-          >
+        <Link to={'/search'} className={styles.search}>
+          <Button block>
             <Space>
               <SearchOutlined />
               <span>{data.search}</span>
@@ -114,23 +108,23 @@ export default class Home extends React.Component {
         </Link>
         {/*页面导航*/}
         <nav className={styles.homeNav}>
-          <Link to={'/category'} className={styles.homeNavLink}>
+          <Link to={isMale ? '/category' : '/category/female'} className={styles.homeNavLink}>
             <img src="/images/sort.png" alt="" />
             <h4>分类</h4>
           </Link>
-          <Link to={'/rank'} className={styles.homeNavLink}>
+          <Link to={isMale ? '/rank' : '/rank/female'} className={styles.homeNavLink}>
             <img src="/images/rank.png" alt="" />
             <h4>排行榜</h4>
           </Link>
-          <Link to={'/free'} className={styles.homeNavLink}>
+          <Link to={isMale ? '/free' : '/free/female'} className={styles.homeNavLink}>
             <img src="/images/free.png" alt="" />
             <h4>免费</h4>
           </Link>
-          <Link to={'/finish'} className={styles.homeNavLink}>
+          <Link to={isMale ? '/finish' : '/finish/female'} className={styles.homeNavLink}>
             <img src="/images/end.png" alt="" />
             <h4>完本</h4>
           </Link>
-          <Link to={'/dashen'} className={styles.homeNavLink}>
+          <Link to={isMale ? '/dashen' : '/dashen/female'} className={styles.homeNavLink}>
             <img src="/images/god.png" alt="" />
             <h4>大神</h4>
           </Link>
@@ -161,15 +155,17 @@ export default class Home extends React.Component {
             type={'line'}
             route
           >
-            <QdButton title={'新书强推'} to={'/strongrec'} style={{marginRight: '0.5625rem'}} />
-            <QdButton title={'三江 · 网文新风'} to={'/sanjiang'} style={{marginLeft: '0.5625rem'}} />
+            <QdButton title={'新书强推'} to={isMale ? '/strongrec' : '/strongrec/female'}
+                      style={{marginRight: '0.5625rem'}} />
+            <QdButton title={'三江 · 网文新风'} to={isMale ? '/sanjiang' : '/sanjiang/female'}
+                      style={{marginLeft: '0.5625rem'}} />
           </QdButtonGroup>
         </div>
         {/*限时免费*/}
         <div className={styles.module}>
           <ModuleHeader
             title={'限时免费'}
-            moreUrl={'/free'}
+            moreUrl={isMale ? '/free' : '/free/female'}
             freeTime={data.free.timeEnd}
           />
           <div>
@@ -192,7 +188,7 @@ export default class Home extends React.Component {
         </div>
         {/*排行榜*/}
         <div className={styles.module} style={{position: 'relative'}}>
-          <ModuleHeader title={'排行榜'} moreUrl={'/rank'} />
+          <ModuleHeader title={'排行榜'} moreUrl={isMale ? '/rank' : '/rank/female'} />
           <div style={{margin: '.4375rem 1rem', paddingBottom: '10.75rem'}}>
             <QdButtonGroup>
               {
@@ -222,7 +218,7 @@ export default class Home extends React.Component {
         </div>
         {/*新书抢鲜*/}
         <div className={styles.module}>
-          <ModuleHeader title={'新书抢鲜'} desc={'24小时热销新书'} moreUrl={'/newbook'} />
+          <ModuleHeader title={'新书抢鲜'} desc={'24小时热销新书'} moreUrl={isMale ? '/newbook' : '/newbook/female'} />
           <div>
             <ol style={{marginBottom: 0}}>
               {
@@ -246,7 +242,7 @@ export default class Home extends React.Component {
         </div>
         {/*畅销完本*/}
         <div className={styles.module}>
-          <ModuleHeader title={'畅销完本'} desc={'今日畅销完本书'} moreUrl={'/bestsell'} />
+          <ModuleHeader title={'畅销完本'} desc={'今日畅销完本书'} moreUrl={isMale ? '/bestsell' : '/bestsell/female'} />
           <div>
             <ol style={{marginBottom: 0}}>
               {
@@ -270,7 +266,7 @@ export default class Home extends React.Component {
         </div>
         {/*分类推荐*/}
         <div className={styles.module} style={{position: 'relative'}}>
-          <ModuleHeader title={'分类推荐'} desc={'频道主编推荐'} moreUrl={'/category'} />
+          <ModuleHeader title={'分类推荐'} desc={'频道主编推荐'} moreUrl={isMale ? '/category' : '/category/female'} />
           {
             // 两层分类
             new Array(2).fill(0).map((val, floorIndex) => (
