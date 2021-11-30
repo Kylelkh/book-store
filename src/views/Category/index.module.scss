@@ -1,0 +1,63 @@
+.moduleTitle {
+  position: relative;
+  line-height: 40px;
+  display: block;
+  padding: 0 1rem;
+
+  h3 {
+    font-size: 1rem;
+    font-family: FZZCYSK;
+    font-weight: 400;
+    display: inline;
+    color: #33373d;
+  }
+
+  .count {
+    font-family: 'pingfang sc';
+    font-size: .8125rem;
+    margin-left: .7rem;
+    color: #969ba3;
+
+    output {
+      margin: 0 .5ch;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 1rem;
+    content: '';
+    border-bottom: 1px solid #f0f1f2;
+  }
+
+  .icon {
+    font-size: 1.1rem;
+    position: absolute;
+    top: 0;
+    right: .875rem;
+    bottom: 0;
+    margin: auto;
+    color: #969ba3;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  //justify-content: space-between;
+  font-size: .75rem;
+  line-height: 0;
+  padding: 0 1rem 1rem;
+  //text-align: justify;
+
+  a {
+    margin-top: 0.75rem;
+    margin-right: 0.97rem;
+  }
+
+  a:nth-child(4n) {
+    margin-right: 0;
+  }
+}

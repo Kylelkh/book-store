@@ -89,5 +89,9 @@ module.exports = () => {
   return Mock.mock({
     'home': homeData(true),
     'homeFemale': homeData(false),
+    'search': {
+      'hot|10': ['@ctitle(2, 14)'],
+      'history': ['三体', '仙魔变'],
+    },
   })
 }

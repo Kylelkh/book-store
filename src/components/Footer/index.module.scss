@@ -92,5 +92,9 @@
     bottom: 0;
     height: 1.625rem;
     margin: auto;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 }

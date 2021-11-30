@@ -63,7 +63,7 @@ export default class Home extends React.Component {
     const rankTitle = isMale ? maleRank : femaleRank;
     const categoryTitle = isMale ? maleCategory : femaleCategory;
     return data.banner ? (
-      <div>
+      <div style={{backgroundColor: '#F6F7F9'}}>
         {/*头部*/}
         <Header isHome hasTabs tabs={[
           {name: '男生', to: '/home'},

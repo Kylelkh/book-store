@@ -22,13 +22,16 @@ class App extends React.Component {
     loading: true
   }
 
+  // 无需加载状态的页面
+  noLoadingUrl = /login|reg|404/;
+
   componentDidMount() {
     // 创建加载状态监听
     this.pubsubLoading = PubSub.subscribe('updateLoading', (msg, loading) => this.setState({loading}));
     // 路由变化时，确定加载状态
-    this.props.history.listen(location => PubSub.publish('updateLoading', !/login|reg|404/.test(location.pathname)));
+    this.props.history.listen(location => PubSub.publish('updateLoading', !this.noLoadingUrl.test(location.pathname)));
     // 页面第一次初始化时，确定加载状态
-    PubSub.publish('updateLoading', !/login|reg|404/.test(this.props.location.pathname));
+    PubSub.publish('updateLoading', !this.noLoadingUrl.test(this.props.location.pathname));
   }
 
   componentWillUnmount() {
@@ -54,7 +57,7 @@ class App extends React.Component {
           </div>
         </Mask>
         {/*回到顶部*/}
-        <BackTop />
+        <BackTop duration={100} />
         {/*路由*/}
         <Switch>
           <Redirect exact from={'/'} to={'/home'} />

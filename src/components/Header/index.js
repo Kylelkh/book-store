@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 import {Popup} from 'antd-mobile'
 
-import style from './index.module.scss'
+import styles from './index.module.scss'
 import QdButtonGroup from "../QdButtonGroup";
 import QdButton from "../QdButton";
 
@@ -33,6 +33,7 @@ class Header extends React.Component {
     pageTitle: '',
     hasTabs: false,
     tabs: [],
+    style: {},
   }
 
   static propTypes = {
@@ -43,27 +44,29 @@ class Header extends React.Component {
       name: propTypes.string.isRequired,
       to: propTypes.string.isRequired,
     })),
+    style: propTypes.object,
   }
 
   render() {
-    const {isHome, pageTitle, hasTabs, tabs} = this.props;
+    const {isHome, pageTitle, hasTabs, tabs, style} = this.props;
     return (
-      <div className={style.header} style={isHome ? null : {background: '#FFF'}}>
+      <div className={styles.header} style={isHome ? null : {background: '#FFF', ...style}}>
         {
           // 导航栏左部
           isHome ? (
-            <Link to={'/home'} className={style.logoA}>
-              <h1 className={style.logo}>起点中文网</h1>
+            <Link to={'/home'} className={styles.logoA}>
+              <h1 className={styles.logo}>起点中文网</h1>
             </Link>
           ) : (
             <span>
               <button
-                className={style.back}
+                className={styles.back}
                 onClick={() => this.props.history.go(-1)}
+                style={{marginTop: '0.03rem'}}
               >
                 <LeftOutline fontSize={16} />
               </button>
-              <h1 className={style.title}>{pageTitle}</h1>
+              <h1 className={styles.title}>{pageTitle}</h1>
             </span>
           )
         }
@@ -80,7 +83,7 @@ class Header extends React.Component {
             >
               {
                 tabs.map((item, index) => (
-                  <QdButton key={index} title={item.name} to={item.to} className={style.headerNav} />
+                  <QdButton key={index} title={item.name} to={item.to} className={styles.headerNav} />
                 ))
               }
             </QdButtonGroup>
@@ -89,38 +92,38 @@ class Header extends React.Component {
         {
           // 导航栏右侧图标
           isHome ? (
-            <div className={style.headerRight}>
+            <div className={styles.headerRight}>
               <button
-                className={style.icon}
+                className={styles.icon}
                 onClick={() => this.props.history.push('/user')}
               >
                 <UserOutlined style={{fontSize: '1.1rem', color: '#ED424B'}} />
               </button>
               <button
-                className={style.icon}
+                className={styles.icon}
                 onClick={() => this.props.history.push('/bookshelf')}
               >
                 <ContentOutline fontSize={'1.3rem'} color={'#ED424B'} />
               </button>
             </div>
           ) : (
-            <div className={style.headerRight}>
+            <div className={styles.headerRight}>
               <button
-                className={style.icon}
+                className={styles.icon}
                 onClick={() => this.props.history.push('/search')}
               >
-                <SearchOutlined style={{fontSize: '1.1rem', color: '#7F8285'}} />
+                <SearchOutlined style={{fontSize: '1rem', color: '#7F8285'}} />
               </button>
               <button
-                className={`${style.iconMore} ${this.state.moreActive ? style.active : ''}`}
+                className={`${styles.iconMore} ${this.state.moreActive ? styles.active : ''}`}
                 onClick={() => this.setState({
                   moreActive: !this.state.moreActive,
                   visible: !this.state.visible,
                 })}
               />
               <Popup
-                bodyClassName={style.popupBody}
-                maskClassName={style.popupMask}
+                bodyClassName={styles.popupBody}
+                maskClassName={styles.popupMask}
                 visible={this.state.visible}
                 onMaskClick={() => this.setState({
                   moreActive: !this.state.moreActive,
@@ -128,41 +131,41 @@ class Header extends React.Component {
                 })}
                 position='top'
               >
-                <nav className={style.guideNav}>
-                  <Link to={'/home'} className={style.guideNavLink}>
-                    <i className={`${style.guiIcon} ${style.iconHome}`} />
-                    <h4 className={style.guiH}>首页</h4>
+                <nav className={styles.guideNav}>
+                  <Link to={'/home'} className={styles.guideNavLink}>
+                    <i className={`${styles.guiIcon} ${styles.iconHome}`} />
+                    <h4 className={styles.guiH}>首页</h4>
                   </Link>
-                  <Link to={'/category'} className={style.guideNavLink}>
-                    <i className={`${style.guiIcon} ${style.iconSort}`} />
-                    <h4 className={style.guiH}>分类</h4>
+                  <Link to={'/category'} className={styles.guideNavLink}>
+                    <i className={`${styles.guiIcon} ${styles.iconSort}`} />
+                    <h4 className={styles.guiH}>分类</h4>
                   </Link>
-                  <Link to={'/rank'} className={style.guideNavLink}>
-                    <i className={`${style.guiIcon} ${style.iconRank}`} />
-                    <h4 className={style.guiH}>排行榜</h4>
+                  <Link to={'/rank'} className={styles.guideNavLink}>
+                    <i className={`${styles.guiIcon} ${styles.iconRank}`} />
+                    <h4 className={styles.guiH}>排行榜</h4>
                   </Link>
-                  <Link to={'/free'} className={style.guideNavLink}>
-                    <i className={`${style.guiIcon} ${style.iconFree}`} />
-                    <h4 className={style.guiH}>免费</h4>
+                  <Link to={'/free'} className={styles.guideNavLink}>
+                    <i className={`${styles.guiIcon} ${styles.iconFree}`} />
+                    <h4 className={styles.guiH}>免费</h4>
                   </Link>
-                  <Link to={'/finish'} className={style.guideNavLink}>
-                    <i className={`${style.guiIcon} ${style.iconEnd}`} />
-                    <h4 className={style.guiH}>完本</h4>
+                  <Link to={'/finish'} className={styles.guideNavLink}>
+                    <i className={`${styles.guiIcon} ${styles.iconEnd}`} />
+                    <h4 className={styles.guiH}>完本</h4>
                   </Link>
-                  <Link to={'/user'} className={style.guideNavLink}>
-                    <i className={`${style.guiIcon} ${style.iconAccount}`} />
-                    <h4 className={style.guiH}>账户</h4>
+                  <Link to={'/user'} className={styles.guideNavLink}>
+                    <i className={`${styles.guiIcon} ${styles.iconAccount}`} />
+                    <h4 className={styles.guiH}>账户</h4>
                   </Link>
                 </nav>
                 <div
-                  className={style.guiFooter}
+                  className={styles.guiFooter}
                   onClick={el => el.target.nodeName === "A" && this.props.location.pathname.includes('bookshelf') && this.setState({
                     moreActive: !this.state.moreActive,
                     visible: false,
                   })}
                 >
                   <QdButton
-                    className={style.goBook}
+                    className={styles.goBook}
                     route
                     to={'/bookshelf'}
                     title={'我的书架'}
