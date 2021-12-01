@@ -10,6 +10,12 @@ const banner = (n, start) => new Array(n).fill('').map((val, index) => ({
   _id: start + index + '',
   img: mr.image("1080x375", mr.color(), mr.cword()),
 }))
+// 最简单的书籍信息
+const simpleBook = (n, start) => new Array(n).fill('').map((val, index) => ({
+  id: start + index,
+  _id: start + index + '',
+  title: '@ctitle(2, 16)',
+}))
 // 小型书籍展示区数据
 const smallBook = (n, start) => new Array(n).fill('').map((val, index) => ({
   id: start + index,
@@ -67,22 +73,40 @@ const homeData = isMale => ({
   qing: smallBook(5, 10098),
   jingxuan: [
     {
-      id: 11111,
+      id: 10103,
       img: mr.image("164x66", mr.color(), mr.cword()),
     },
     {
-      id: 11112,
+      id: 10104,
       img: mr.image("164x66", mr.color(), mr.cword()),
     },
     {
-      id: 11113,
+      id: 10105,
       img: mr.image("164x66", mr.color(), mr.cword()),
     },
     {
-      id: 11114,
+      id: 10106,
       img: mr.image("164x66", mr.color(), mr.cword()),
     }
   ]
+})
+// 排行榜数据
+const rankData = isMale => ({
+  yuepiao: simpleBook(5, 10107),
+  changxiao: simpleBook(5, 10112),
+  yuedu: simpleBook(5, 10117),
+  fensi: simpleBook(5, 10122),
+  tuijian: simpleBook(5, 10127),
+  dashang: simpleBook(5, 10132),
+  gengxin: simpleBook(5, 10137),
+  ...(isMale ? {
+    qianyue: simpleBook(5, 10142),
+    xinshu: simpleBook(5, 10147),
+    xinren: simpleBook(5, 10152),
+  } : {
+    shoucang: simpleBook(5, 10142),
+    mianfei: simpleBook(5, 10147),
+  })
 })
 
 module.exports = () => {
@@ -93,5 +117,7 @@ module.exports = () => {
       'hot|10': ['@ctitle(2, 14)'],
       'history': ['三体', '仙魔变'],
     },
+    'rank': rankData(true),
+    'rankFemale': rankData(false),
   })
 }

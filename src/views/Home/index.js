@@ -109,23 +109,23 @@ export default class Home extends React.Component {
         {/*页面导航*/}
         <nav className={styles.homeNav}>
           <Link to={isMale ? '/category' : '/category/female'} className={styles.homeNavLink}>
-            <img src="/images/sort.png" alt="" />
+            <img src={"/images/sort.png"} alt="" />
             <h4>分类</h4>
           </Link>
           <Link to={isMale ? '/rank' : '/rank/female'} className={styles.homeNavLink}>
-            <img src="/images/rank.png" alt="" />
+            <img src={"/images/rank.png"} alt="" />
             <h4>排行榜</h4>
           </Link>
           <Link to={isMale ? '/free' : '/free/female'} className={styles.homeNavLink}>
-            <img src="/images/free.png" alt="" />
+            <img src={"/images/free.png"} alt="" />
             <h4>免费</h4>
           </Link>
           <Link to={isMale ? '/finish' : '/finish/female'} className={styles.homeNavLink}>
-            <img src="/images/end.png" alt="" />
+            <img src={"/images/end.png"} alt="" />
             <h4>完本</h4>
           </Link>
           <Link to={isMale ? '/dashen' : '/dashen/female'} className={styles.homeNavLink}>
-            <img src="/images/god.png" alt="" />
+            <img src={"/images/god.png"} alt="" />
             <h4>大神</h4>
           </Link>
         </nav>

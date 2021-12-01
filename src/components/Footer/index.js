@@ -55,7 +55,7 @@ export default class Footer extends React.Component {
           copyright © 2002-2021 m.qidian.com
         </div>
         <Link to={'/home'} className={styles.footerApp}>
-          <img src="/images/footerApp.png" alt='' />
+          <img src={"/images/footerApp.png"} alt='' />
           <h3>安装起点读书客户端</h3>
           <p>看更多正版好书</p>
           <QdButton className={styles.download} fill={'solid'} type={'line'} title={'下载'} style={{lineHeight: 1}} />

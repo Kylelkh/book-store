@@ -83,7 +83,7 @@ class Header extends React.Component {
             >
               {
                 tabs.map((item, index) => (
-                  <QdButton key={index} title={item.name} to={item.to} className={styles.headerNav} />
+                  <QdButton replace key={index} title={item.name} to={item.to} className={styles.headerNav} />
                 ))
               }
             </QdButtonGroup>

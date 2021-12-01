@@ -63,8 +63,11 @@ class App extends React.Component {
           <Redirect exact from={'/'} to={'/home'} />
           <Route path={'/home'} component={Home} />
           <Route exact path={'/category'} component={Category} />
-          <Route exact path={'/category/female'} component={Category} />
-          <Route path={'/rank'} component={Rank} />
+          <Route path={'/category/female'} component={Category} />
+          {/*<Route path={'/category'} component={分类详情} />*/}
+          <Route exact path={'/rank'} component={Rank} />
+          <Route path={'/rank/female'} component={Rank} />
+          {/*<Route path={'/rank'} component={排行详情} />*/}
           <Route path={'/free'} component={Free} />
           <Route path={'/finish'} component={Finish} />
           <Route path={'/dashen'} component={DaShen} />

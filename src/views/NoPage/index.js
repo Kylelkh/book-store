@@ -7,7 +7,7 @@ export default class NoPage extends React.Component {
     return (
       <div className={style.body}>
         <div className={`${style.error} ${style.cf}`}>
-          <img className={`${style.errImg} ${style.fl}`} src="/images/error.png" alt='' />
+          <img className={`${style.errImg} ${style.fl}`} src={"/images/error.png"} alt='' />
           <div className={`${style.errText} ${style.fl}`}>
             <h3>抱歉，页面无法访问...</h3>
             <p><strong>网址有错误</strong><em>·</em>请检查地址是否完整或存在多余字符</p>

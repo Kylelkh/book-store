@@ -178,7 +178,6 @@ export default class Category extends React.Component {
                         key={index}
                         route
                         title={val}
-                        // block
                         to={`/category/${isMale ? key : 'f' + key}/${index + 1}`}
                         type={'gray'}
                       />
