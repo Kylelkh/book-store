@@ -53,7 +53,7 @@
       font-size: .8125rem;
       display: block;
       overflow: hidden;
-      max-width: calc(100vw - 2rem - (176rem / 16));
+      max-width: calc(100vw - 2rem - (176rem / 12.5));
       white-space: nowrap;
       text-overflow: ellipsis;
       color: #969ba3;
@@ -136,7 +136,6 @@
       -webkit-transform-origin: left bottom;
       transform-origin: left bottom;
       color: inherit;
-      //background-color: currentColor;
     }
 
     &::after {

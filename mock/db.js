@@ -41,7 +41,7 @@ const homeData = isMale => ({
   banner: banner(4, 10000), // 轮播图
   hot: smallBook(7, 10004), // 热门小说
   free: { // 限时免费
-    timeEnd: Date.now() + 80000000,// 限免时间
+    timeEnd: Date.now() + (isMale ? 180000000 : 130000000),// 限免时间
     book: smallBook(6, 10011),
   },
   search: '@ctitle(5, 8)', // 搜索推荐关键字
@@ -108,6 +108,31 @@ const rankData = isMale => ({
     mianfei: simpleBook(5, 10147),
   })
 })
+// 免费数据
+const freeData = isMale => ({ // 限时免费
+  timeEnd: Date.now() + (isMale ? 180000000 : 130000000),// 限免时间
+  nowBook: smallBook(8, 10152),
+  nextBook: smallBook(8, 10160),
+  hotFree: bigBook(3, 10168, isMale, true),
+  newFree: bigBook(3, 10171, isMale, true),
+})
+// 完本数据
+const finishData = isMale => ({
+  yingshi: smallBook(8, 10174),
+  jingdian: bigBook(3, 10182, isMale, false),
+  dashen: bigBook(3, 10185, isMale, false),
+  changxiao: bigBook(3, 10188, isMale, false),
+})
+// 大神数据
+const dashenData = isMale => ({
+  new: smallBook(8, 10191),
+
+})
+// 所有作者数据
+const authList = n => new Array(n).fill('').map((val, index) => ({
+  id: 10000 + index,
+  _id: 10000 + index + '',
+}))
 
 module.exports = () => {
   return Mock.mock({
@@ -119,5 +144,11 @@ module.exports = () => {
     },
     'rank': rankData(true),
     'rankFemale': rankData(false),
+    'free': freeData(true),
+    'freeFemale': freeData(false),
+    'finish': finishData(true),
+    'finishFemale': finishData(false),
+
+    // 'dashen':
   })
 }

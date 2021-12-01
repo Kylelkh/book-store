@@ -26,6 +26,11 @@ class Header extends React.Component {
   state = {
     moreActive: false,
     visible: false,
+    isMale: true,
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    return {isMale: nextProps.location.pathname === '/home'};
   }
 
   static defaultProps = {
@@ -62,9 +67,8 @@ class Header extends React.Component {
               <button
                 className={styles.back}
                 onClick={() => this.props.history.go(-1)}
-                style={{marginTop: '0.03rem'}}
               >
-                <LeftOutline fontSize={16} />
+                <LeftOutline fontSize={'1.1rem'} />
               </button>
               <h1 className={styles.title}>{pageTitle}</h1>
             </span>
