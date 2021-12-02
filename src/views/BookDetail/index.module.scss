@@ -1,0 +1,35 @@
+.bookLayout {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 1rem;
+  -webkit-transition: padding-left .15s;
+  transition: padding-left .15s;
+
+  img {
+    width: 5.25rem;
+    height: 7rem;
+    border-radius: 2px;
+    box-shadow: none;
+    font-size: 0;
+    float: left;
+    margin-right: .5rem;
+  }
+
+  .bookCell {
+    line-height: 1.4rem;
+    overflow: hidden;
+
+    h2 {
+      line-height: 1.4;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-bottom: 0;
+    }
+
+    //.bookTopAuth {
+    //  font-size: .8125rem;
+    //}
+  }
+}

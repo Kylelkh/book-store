@@ -15,6 +15,7 @@ import Finish from "../../views/Finish";
 import DaShen from "../../views/DaShen";
 import Bookshelf from "../../views/Bookshelf";
 import Search from "../../views/Search";
+import BookDetail from "../../views/BookDetail";
 
 class App extends React.Component {
 
@@ -79,6 +80,7 @@ class App extends React.Component {
           {/*<Route path={'/dashen'} component={大神详情} />*/}
           <Route path={'/search'} component={Search} />
           <Route path={'/bookshelf'} component={Bookshelf} />
+          <Route path={'/book/:id'} component={BookDetail} />
           <Route path={'/404'} component={NoPage} />
           <Redirect to={'/404'} />
         </Switch>

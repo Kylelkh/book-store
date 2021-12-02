@@ -14,6 +14,8 @@ export const queryDashenFemale = async params => request.get(`/api/dashenFemale`
 
 export const queryAuth = async params => request.get(`/api/auths`, {params: params}) // 所有作者数据
 
+export const queryBookDetail = async params => request.get(`/api/books`, {params: params}) // 书籍详情
+
 export const queryDashenAll = async isMale => Promise.all([
   isMale ? queryDashen() : queryDashenFemale(),
   queryAuth({
