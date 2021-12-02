@@ -1,0 +1,27 @@
+.authLi::after {
+  margin-left: 4.75rem;
+  display: block;
+  margin-top: -1px;
+  content: '';
+  -webkit-transition: margin-left .15s;
+  transition: margin-left .15s;
+  border-bottom: 1px solid #f0f1f2;
+}
+
+.baijinMore {
+  height: 2.75rem;
+  font-size: .8125rem;
+  line-height: 2.75rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #c0c5cc;
+  background-color: #fff;
+  border: none;
+  border-top: 1px solid #f0f1f2;
+  padding: 0;
+
+  &:before {
+    line-height: 2.75rem;
+  }
+}

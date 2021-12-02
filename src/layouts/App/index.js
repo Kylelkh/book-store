@@ -74,8 +74,8 @@ class App extends React.Component {
           <Route exact path={'/finish'} component={Finish} />
           <Route path={'/finish/female'} component={Finish} />
           {/*<Route path={'/finish'} component={完本详情} />*/}
-          <Route exact path={'/dashen'} component={Finish} />
-          <Route path={'/dashen/female'} component={Finish} />
+          <Route exact path={'/dashen'} component={DaShen} />
+          <Route path={'/dashen/female'} component={DaShen} />
           {/*<Route path={'/dashen'} component={大神详情} />*/}
           <Route path={'/search'} component={Search} />
           <Route path={'/bookshelf'} component={Bookshelf} />

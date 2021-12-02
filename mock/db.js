@@ -20,7 +20,7 @@ const simpleBook = (n, start) => new Array(n).fill('').map((val, index) => ({
 const smallBook = (n, start) => new Array(n).fill('').map((val, index) => ({
   id: start + index,
   _id: start + index + '',
-  img: mr.image("66x88", mr.color(), mr.cword()),
+  img: mr.image("150x200", mr.color(), mr.cword()),
   title: '@ctitle(2, 16)',
   auth: '@cword(2, 6)',
 }))
@@ -28,7 +28,7 @@ const smallBook = (n, start) => new Array(n).fill('').map((val, index) => ({
 const bigBook = (n, start, isMale, isContinue) => new Array(n).fill('').map((val, index) => ({
   id: start + index,
   _id: start + index + '',
-  img: mr.image("66x88", mr.color(), mr.cword()),
+  img: mr.image("150x200", mr.color(), mr.cword()),
   title: '@ctitle(2, 16)',
   desc: '@cparagraph()',
   auth: '@cword(2, 6)',
@@ -123,15 +123,15 @@ const finishData = isMale => ({
   dashen: bigBook(3, 10185, isMale, false),
   changxiao: bigBook(3, 10188, isMale, false),
 })
-// 大神数据
-const dashenData = isMale => ({
-  new: smallBook(8, 10191),
-
-})
 // 所有作者数据
 const authList = n => new Array(n).fill('').map((val, index) => ({
   id: 10000 + index,
   _id: 10000 + index + '',
+  img: mr.image("512x512", mr.color(), mr.cword()),
+  'level|1': ['白金', '大神'],
+  nikeName: '@cword(2, 7)',
+  desc: '@cparagraph()',
+  'fenlei|1': ['男生', '女生'],
 }))
 
 module.exports = () => {
@@ -148,7 +148,8 @@ module.exports = () => {
     'freeFemale': freeData(false),
     'finish': finishData(true),
     'finishFemale': finishData(false),
-
-    // 'dashen':
+    'dashen': smallBook(8, 10191),
+    'dashenFemale': smallBook(8, 10199),
+    'auths': authList(500),
   })
 }
